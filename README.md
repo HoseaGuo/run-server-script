@@ -48,7 +48,7 @@ interface Options {
     因服务器需要要进行`git clone` 或者 `git pull`操作，所以要先在git仓库上配置好服务器的 ssh keys
   */
   gitRemoteUrl?: string,
-  /* package.json 里 的scripts 队列名，默认： [] */
+  /* 需要运行的package.json里的scripts的key数组，按照index顺序执行，默认：[] */
   scriptQueue?: string[],
   /* 是否安装npm包， 默认：false */
   npmInstall?: boolean,
