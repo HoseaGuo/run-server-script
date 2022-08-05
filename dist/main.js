@@ -40,13 +40,13 @@ const ssh = new nodeSsh.NodeSSH();
 let serverPath = "";
 function serverScript(options) {
     let { serverPath: _serverPath, gitRemoteUrl, scriptQueue, npmInstall, sshConfig } = options;
-    serverPath = _serverPath;
+    serverPath = _serverPath || '/data/www/_test';
     ssh.connect(sshConfig).then(function () {
         return __awaiter(this, void 0, void 0, function* () {
             console.log('ssh connect success');
             if (gitRemoteUrl)
                 yield gitUpdate(gitRemoteUrl);
-            if (npmInstall !== undefined ? npmInstall : true)
+            if (npmInstall !== undefined ? npmInstall : false)
                 yield npmInstallFn();
             yield runScriptQueue(scriptQueue);
             ssh.dispose();

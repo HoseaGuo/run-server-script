@@ -1,7 +1,7 @@
 {
   "name": "run-server-script",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.2",
+  "description": "run package.json scripts on the server",
   "source": "source/index.ts",
   "main": "dist/main.js",
   "module": "dist/module.js",
@@ -12,7 +12,13 @@
     "dev": "nodemon source/index.ts",
     "build": "rollup --config rollup.config.ts"
   },
-  "keywords": [],
+  "keywords": [
+    "node",
+    "node-ssh",
+    "server",
+    "scripts",
+    "git"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -30,5 +36,9 @@
     "chalk": "^4.0.1",
     "draftlog": "^1.0.13",
     "node-ssh": "^13.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HoseaGuo/run-server-script.git"
   }
 }

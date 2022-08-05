@@ -9,7 +9,7 @@ DraftLog(console)
 interface Options {
   /* 服务器部署路径 */
   serverPath: string,
-  /* git远程仓库地址 */
+  /* git远程仓库地址 因服务器需要要进行`git clone` 或者 `git pull`操作，所以要先在git仓库上配置好服务器的 ssh keys */
   gitRemoteUrl?: string,
   /* package.json 里 的script 队列名 */
   scriptQueue?: string[],
@@ -26,7 +26,7 @@ let serverPath = "";
 function serverScript(options: Options) {
   let { serverPath: _serverPath, gitRemoteUrl, scriptQueue, npmInstall, sshConfig } = options;
 
-  serverPath = _serverPath;
+  serverPath = _serverPath || '/data/www/_test';
 
   ssh.connect(sshConfig).then(async function () {
 
@@ -34,7 +34,7 @@ function serverScript(options: Options) {
 
     if (gitRemoteUrl) await gitUpdate(gitRemoteUrl);
 
-    if (npmInstall !== undefined ? npmInstall : true) await npmInstallFn();
+    if (npmInstall !== undefined ? npmInstall : false) await npmInstallFn();
 
     await runScriptQueue(scriptQueue);
 
